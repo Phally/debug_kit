@@ -145,7 +145,7 @@ class HtmlToolbarHelper extends ToolbarHelper {
  * @return void
  */
 	public function send() {
-		if (!$this->settings['forceEnable'] && Configure::read('debug') == 0) {
+		if (!$this->settings['forceEnable'] && !Configure::read('debug')) {
 			return;
 		}
 		$view = $this->_View;

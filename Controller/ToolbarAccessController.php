@@ -84,7 +84,7 @@ class ToolbarAccessController extends DebugKitAppController {
  * @return void
  */
 	public function history_state($key = null) {
-		if (Configure::read('debug') == 0) {
+		if (!Configure::read('debug')) {
 			return $this->redirect($this->referer());
 		}
 		$oldState = $this->Toolbar->loadState($key);
@@ -106,7 +106,7 @@ class ToolbarAccessController extends DebugKitAppController {
 			empty($this->request->data['log']['sql']) ||
 			empty($this->request->data['log']['ds']) ||
 			empty($this->request->data['log']['hash']) ||
-			Configure::read('debug') == 0
+			!Configure::read('debug')
 		) {
 			throw new BadRequestException('Invalid parameters');
 		}
